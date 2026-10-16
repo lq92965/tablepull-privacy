@@ -14,7 +14,8 @@ code{background:#f3f4f6;padding:2px 6px;border-radius:4px;}
 <p>TablePull is a browser extension that extracts structured data from the webpage you are currently viewing. <strong>We do not collect, store, or transmit any personal data to our servers, because we do not operate any servers that receive your data.</strong> All extraction runs 100% locally inside your browser.</p>
 
 <h2>What we collect</h2>
-<p><strong>Nothing.</strong> We do not collect names, emails, browsing history, page contents, extracted data, or usage analytics. There is no account and no backend database.</p>
+<p><strong>Nothing about your browsing or extracted data.</strong> We do not collect names, emails, browsing history, page contents, extracted data, or usage analytics. There is no account and no backend database that receives your data.</p>
+<p>The only purchase-related data involved is your <strong>license key</strong>, which is sent to the license-verification endpoint you (or we) configure, solely to validate that your Pro purchase is active. We do not store your license key on any server.</p>
 
 <h2>Bring-Your-Own-Key (BYOK) AI features</h2>
 <p>If you enable the optional AI column-mapping feature, TablePull uses <strong>your own</strong> LLM API key. That key is stored only in your browser's local sync storage (<code>chrome.storage.sync</code>) and is <strong>never sent to us</strong>. When you use the feature, the relevant page text is sent directly from your browser to the AI provider <em>you</em> choose, using <em>your</em> key. We are not an intermediary and never see the key or the content.</p>
@@ -28,7 +29,11 @@ code{background:#f3f4f6;padding:2px 6px;border-radius:4px;}
 <p>TablePull does not request broad host permissions, does not run remotely hosted code, and does not access <code>chrome://</code> or the Chrome Web Store.</p>
 
 <h2>Third parties</h2>
-<p>We share no data with third parties. The only network request your browser may make is, at your explicit choice, to your selected AI provider when you use the optional BYOK feature.</p>
+<p>We share no data with third parties. The only network requests your browser may make are: (1) at your explicit choice, to your selected AI provider when you use the optional BYOK feature; and (2) to the license-verification endpoint when you activate or validate a Pro license key.</p>
+
+<h2>Payments &amp; licensing</h2>
+<p>TablePull is offered as a free tier (limited rows) plus an optional Pro upgrade. <strong>Payments are processed by a third-party Merchant of Record</strong> (for example LemonSqueezy, Paddle, or Keyforge) — we never see, store, or handle your card or payment details. The checkout is conducted entirely on that processor's pages.</p>
+<p>To unlock Pro, you receive a license key from the processor and enter it in TablePull Settings. The key is sent only to the license-verification endpoint to confirm it is valid and active. TablePull stores only the activation status (e.g., "Pro active") locally on your device (<code>chrome.storage.sync</code>); it does not transmit or store the key itself to us.</p>
 
 <h2>Contact</h2>
 <p>Questions: privacy@tablepull.app</p>
