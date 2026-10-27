@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Activating your Pro license</title>
+<style>
+  :root { --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --ok:#16a34a; --warn:#b45309; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink); background:#f8fafc; padding:24px;
+  }
+  .card {
+    width:100%; max-width:560px; background:#fff; border:1px solid var(--line);
+    border-radius:16px; padding:32px; box-shadow:0 8px 30px rgba(15,23,42,.06);
+  }
+  .tick {
+    width:52px; height:52px; border-radius:50%; background:#dcfce7; color:var(--ok);
+    display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:700; margin-bottom:18px;
+  }
+  h1 { font-size:22px; margin:0 0 8px; }
+  p { margin:0 0 14px; color:var(--muted); font-size:14.5px; }
+  .keybox {
+    display:flex; gap:8px; margin:18px 0 10px;
+  }
+  input {
+    flex:1; font:14px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#f8fafc; color:var(--ink);
+  }
+  button {
+    font:600 14px/1 inherit; padding:12px 18px; border:0; border-radius:10px;
+    background:var(--ink); color:#fff; cursor:pointer; white-space:nowrap;
+  }
+  button:hover { opacity:.9; }
+  .note {
+    margin-top:20px; padding:14px 16px; border-radius:10px; font-size:13.5px;
+    background:#f1f5f9; color:var(--muted); border:1px solid var(--line);
+  }
+  .warn { background:#fffbeb; border-color:#fde68a; color:var(--warn); }
+  .fine { font-size:12.5px; color:#94a3b8; margin-top:18px; }
+  a { color:#2563eb; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="tick" id="tick">&#10003;</div>
+  <h1 id="title">Payment received</h1>
+  <p id="lead">Your Pro license is being activated automatically in the extension. You can close this tab and open the extension &mdash; the badge should already read <strong>PRO</strong>.</p>
+
+  <div class="keybox" id="keybox" hidden>
+    <input id="key" readonly>
+    <button id="copy">Copy</button>
+  </div>
+
+  <div class="note" id="fallback" hidden>
+    If the badge still says <strong>FREE</strong>: open the extension &rarr; <strong>Settings</strong>, paste the key above, and press <strong>Activate</strong>.
+  </div>
+
+  <div class="note warn" id="bad" hidden></div>
+
+  <p class="fine">Your key was also emailed to the address used at checkout. Keep it &mdash; it re-activates the extension on a new browser.</p>
+</div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var keys = (q.get('license_key') || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+  var status = (q.get('status') || '').toLowerCase();
+  var bad = document.getElementById('bad');
+  var tick = document.getElementById('tick');
+
+  if (status && status !== 'succeeded' && status !== 'active') {
+    tick.textContent = '!';
+    tick.style.background = '#fef3c7';
+    tick.style.color = '#b45309';
+    document.getElementById('title').textContent = 'Payment not completed';
+    document.getElementById('lead').textContent = 'Status reported by the payment provider: ' + status + '.';
+    bad.hidden = false;
+    bad.textContent = 'No license was issued. Nothing has been charged if the status is failed or expired. You can retry the purchase from the extension.';
+    return;
+  }
+
+  if (!keys.length) {
+    tick.textContent = '!';
+    tick.style.background = '#fef3c7';
+    tick.style.color = '#b45309';
+    document.getElementById('title').textContent = 'Payment received, but no license key was issued';
+    document.getElementById('lead').textContent = 'This product is not set up to issue license keys yet, so nothing could be activated.';
+    bad.hidden = false;
+    bad.textContent = 'Contact the developer with your payment ID: ' + (q.get('payment_id') || '(not provided)');
+    return;
+  }
+
+  document.getElementById('keybox').hidden = false;
+  document.getElementById('fallback').hidden = false;
+  document.getElementById('key').value = keys[0];
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var el = document.getElementById('key');
+    el.select();
+    try {
+      navigator.clipboard.writeText(el.value).then(function () {
+        document.getElementById('copy').textContent = 'Copied';
+      });
+    } catch (e) {
+      document.execCommand('copy');
+      document.getElementById('copy').textContent = 'Copied';
+    }
+  });
+})();
+</script>
+</body>
+</html>
