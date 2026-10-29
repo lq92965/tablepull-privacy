@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ComplianceGuard — Privacy Policy</title><style>
+body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;color:#1f2937;line-height:1.7;}
+h1{font-size:26px;margin-bottom:4px;}
+h2{font-size:19px;margin-top:30px;}
+.small{color:#6b7280;font-size:13px;}
+code{background:#f3f4f6;padding:2px 6px;border-radius:4px;}
+</style></head><body>
+<h1>ComplianceGuard — Privacy Policy</h1>
+<p class="small">Last updated: 2026-10-29 · Effective immediately</p>
+
+<h2>Our principle</h2>
+<p>ComplianceGuard is a Shopify app that scans product content for material that may need an AI disclosure under EU AI Act Article 50, and writes a disclosure to a product metafield. <strong>It does not access customer or order data at all.</strong> The app requests only <code>read_products</code>, <code>write_products</code> and, optionally, <code>read_markets</code>.</p>
+
+<h2>What we collect</h2>
+<p>To operate the app we store, per installed store:</p>
+<ul>
+<li>Your <strong>shop domain</strong> (for example <code>your-store.myshopify.com</code>).</li>
+<li>An <strong>offline access token</strong> issued by Shopify, plus its refresh token, used to call the Shopify Admin API on your behalf. Tokens expire and are refreshed automatically.</li>
+<li>A short <strong>run log</strong>: timestamp, operation type (scan or label), and the number of products processed.</li>
+</ul>
+<p>We do <strong>not</strong> collect names, email addresses, phone numbers, postal addresses, order data, payment data, browsing history, or analytics. There is no account and no password.</p>
+
+<h2>Your product data</h2>
+<p>Product titles, handles, descriptions, images and variant weights are read from the Shopify Admin API at the moment you press Scan, and are returned to your browser. They are <strong>not written to our database</strong>. The only write operation the app performs is setting the metafield <code>custom.ai_disclosure</code> on the products you explicitly select and confirm.</p>
+
+<h2>Where data is stored</h2>
+<p>The token and run log are stored on a single server operated by us (DigitalOcean, United States), in a file readable only by the application process. Transmission between your browser, Shopify and our server uses HTTPS.</p>
+
+<h2>Retention and deletion</h2>
+<p>Data is retained while the app is installed. When the app is uninstalled, Shopify sends us a <code>shop/redact</code> webhook 48 hours later and we delete the token and all run logs for that store. You can also request deletion at any time by emailing us; we action it within 30 days.</p>
+
+<h2>GDPR and CCPA</h2>
+<p>We respond to Shopify's mandatory compliance webhooks: <code>customers/data_request</code>, <code>customers/redact</code> and <code>shop/redact</code>. Because the app never receives customer data, the first two always resolve to "no data held".</p>
+
+<h2>Permissions and why</h2>
+<ul>
+<li><code>read_products</code> — to scan product descriptions, images and variants for disclosure gaps.</li>
+<li><code>write_products</code> — to write the <code>custom.ai_disclosure</code> metafield when you apply labels.</li>
+<li><code>read_markets</code> (optional) — only to determine whether your store sells into the EU. If declined, the app reports EU exposure as unknown and still works.</li>
+</ul>
+
+<h2>Third parties</h2>
+<p>We share no data with third parties. The only external service involved is Shopify itself (Admin API, and Billing for subscription charges). Payments are processed by Shopify and appear on your Shopify invoice; we never see or store card details.</p>
+
+<h2>Contact</h2>
+<p>Beijing Xishuai Information Technology Co., Ltd. · <a href="mailto:lq92965@gmail.com">lq92965@gmail.com</a></p>
+<p class="small"><a href="complianceguard-support.html">Support</a> · <a href="index.html">All policies</a></p>
+</body></html>
