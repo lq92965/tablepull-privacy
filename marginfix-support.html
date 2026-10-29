@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MarginFix — Support</title>
+<style>
+  body { margin:0; padding:48px 20px; font:16px/1.7 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:#1f2937; background:#f7f8fa; }
+  main { max-width:760px; margin:0 auto; background:#fff; border:1px solid #e5e7eb; border-radius:12px;
+         padding:36px 40px; }
+  h1 { font-size:26px; margin:0 0 6px; letter-spacing:-.3px; }
+  h2 { font-size:17px; margin:30px 0 8px; }
+  .sub { color:#6b7280; font-size:14px; margin-bottom:22px; }
+  code { background:#f3f4f6; padding:2px 6px; border-radius:4px; font-size:14px; }
+  ul { padding-left:20px; }
+  li { margin:6px 0; }
+  a { color:#2563eb; }
+  .box { background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 16px; font-size:14px; }
+  footer { max-width:760px; margin:18px auto 0; color:#9ca3af; font-size:13px; text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>MarginFix — Support</h1>
+  <div class="sub">Shipping weight audit for Shopify catalogs.</div>
+
+  <h2>Contact us</h2>
+  <p>Email <a href="mailto:lq92965@gmail.com">lq92965@gmail.com</a>. We reply within one business day.</p>
+
+  <h2>What the app does</h2>
+  <ul>
+    <li>Reads the weight stored on every product variant and normalises g, kg, oz and lb into grams.</li>
+    <li>Flags variants heavier than 2 kg and ranks them, with the exact weight that triggered the flag.</li>
+    <li>Suggests concrete fixes: splitting heavy items, cutting packaging weight, free-shipping thresholds.</li>
+  </ul>
+
+  <h2>Why is my weight showing 0?</h2>
+  <p>Shopify only returns weight if it was entered on the variant. Open Shopify admin → Products → pick a
+     product → Variants → <strong>Shipping</strong> → set the weight and unit, then run the audit again.</p>
+
+  <h2>Dimensional weight</h2>
+  <p>Shopify variants do not store dimensions by default, so the app reports actual weight only and tells you
+     where to add L×W×H if you want volumetric calculations.</p>
+
+  <h2>Plans and billing</h2>
+  <ul>
+    <li><strong>Free</strong>: audit up to 10 products each run.</li>
+    <li><strong>Pro — $9/month</strong>: no audit limit, 7-day free trial.</li>
+  </ul>
+  <p>Charges are handled by Shopify and appear on your regular Shopify invoice. To cancel: Shopify admin →
+     Settings → Apps and sales channels → MarginFix → Manage → cancel the subscription.</p>
+
+  <h2>Common questions</h2>
+  <ul>
+    <li><strong>Does it change my data?</strong> No. The app is read-only; it never edits weights, prices,
+        inventory, or orders.</li>
+    <li><strong>Does it read customers or orders?</strong> No. It only requests <code>read_products</code>.</li>
+    <li><strong>Where does the 2 kg threshold come from?</strong> It is the point where most carriers step into
+        a higher tier. Treat it as a prioritisation signal, not a hard limit.</li>
+  </ul>
+
+  <h2>Uninstalling</h2>
+  <p>Removing the app stops all access immediately. See our
+     <a href="marginfix-privacy.html">privacy policy</a> for data deletion.</p>
+
+  <div class="box">Operator: Beijing Xishuai Information Technology Co., Ltd. · Support hours: Mon–Fri,
+     09:00–18:00 (UTC+8).</div>
+</main>
+<footer>MarginFix · <a href="marginfix-privacy.html">Privacy policy</a></footer>
+</body>
+</html>
